@@ -42,3 +42,34 @@ let bag = {
 };
 
 console.log(bag.apple); // 5 if fruit is "apple"
+
+// Property value shorthand
+function makeUser(name, age) {
+  return {
+    name, // same as name: name
+    age, // same as age: age
+    // ...other properties
+  };
+}
+makeUser("John", 30);
+
+// Prototype keys can be numbers which would be converteed into strings
+let obj = {
+  0: "test", // same as "0": "test"
+};
+
+console.log(obj["0"]); // test
+console.log(obj[0]); // test (same property)
+
+// Accessing a property that doesn't exist won't give an error,
+// it will return undefined.
+
+let x = { a: 1, b: 2 };
+console.log(x.c);
+
+// Use the in keyword to see if a property exists in an object.
+console.log("c" in user);
+// Use a quoted string for the target property since a variable
+// would use it's value
+let b = false;
+console.log(b in x);
