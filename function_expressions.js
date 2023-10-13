@@ -3,8 +3,8 @@ function sum1(a, b) {
   return a + b;
 }
 
-// Function expression: created when the execution reaches it and is
-// usable only from that moment.
+// Function expression: created when the execution reaches it and is usable
+// only from that moment.
 let sum = function (a, b) {
   return a + b;
 };
@@ -20,3 +20,14 @@ let pow2 = square;
 
 console.log(square(10));
 console.log(pow2(10));
+
+// A function declaration is only visible within the code block.
+
+{
+  let f = function () {
+    console.log("Called function");
+  };
+  f(); // Ok
+}
+
+// f(); // error
