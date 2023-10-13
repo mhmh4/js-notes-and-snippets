@@ -73,3 +73,11 @@ console.log("c" in user);
 // would use it's value
 let b = false;
 console.log(b in x);
+
+// in keyword can also be used to iterate over all property keys
+for (const key in user) {
+  console.log(`${key}: ${user[key]}`);
+}
+
+// Order of properties: integer properties will be sorted, while other
+// properties appear in creation order.
