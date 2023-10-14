@@ -24,3 +24,43 @@ let o2 = { a: "one", b: 2 };
 // Object.assign(dest, o1, o2); // copies both o1 and o2 to dest
 let dest = Object.assign({}, o1, o2);
 console.log(dest);
+
+// Objects can also be properties of other objects.
+
+// Outer object
+user = {
+  name: "John",
+  // Inner object
+  sizes: {
+    height: 182,
+    width: 50,
+  },
+};
+
+// Though when creating a copy of user, the sizes property doesn't get copied.
+clone = Object.assign({}, user);
+console.log(user.sizes === clone.sizes); // true, same object
+
+// user and clone share sizes
+user.sizes.width = 60;
+console.log(clone.sizes.width); // 60, get the result from the other one
+
+// It's not enough to use Object.assign since sizes doesn't get copied.
+// To solve this, we'd have to loop through every property value to see if it's
+// an object and clone it if it is.
+
+// The structuredClone function can do this for us.
+clone = structuredClone(user);
+console.log(user.sizes === clone.sizes); // false, different objects
+
+// user and clone are unrelated now
+user.sizes.width = 30;
+console.log(clone.sizes.width); // 60, unchanged
+
+// structuredClone works with most types. It also supports cloning a circular
+// reference (object with a reference value of itself). But there are cases
+// where the function fails. One example is when cloning an object that
+// contains a function property.
+structuredClone({
+  // f: function () {}, // error
+});
