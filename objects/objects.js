@@ -53,7 +53,7 @@ function makeUser(name, age) {
 }
 makeUser("John", 30);
 
-// Prototype keys can be numbers which would be converteed into strings
+// Prototype keys can be numbers which would be converted into strings
 let obj = {
   0: "test", // same as "0": "test"
 };
